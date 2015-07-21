@@ -15,17 +15,23 @@ html, body {
   color: #FFFFFF;
   text-align: center;
   padding: 5px;
-  padding-right: 15px;
+  padding-right: 0px;
+  padding-left: 0px;
   margin: 0px;
   width: 100%;
 }
 
-#content {
+.content {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   font-family: Helvetica, Arial, sans-serif;
   float: left;
   background-color: #D8D8D8;
   color: #000000;
-  padding: 10px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 0px;
   padding-bottom: 60px;
   width: 100%;
 }
@@ -42,4 +48,31 @@ html, body {
   height: 200px;
   margin: 15px;
   padding-right: 10px;
+}
+
+
+.table-of-contents {
+  float: right;
+  width: 40%;
+  background: #eee;
+  font-size: 0.8em;
+  padding: 1em 2em;
+  margin: 0 0 0.5em 0.5em;
+}
+.table-of-contents ul {
+  padding: 0;
+}
+.table-of-contents li {
+  margin: 0 0 0.25em 0;
+}
+.table-of-contents a {
+  text-decoration: none;
+}
+.table-of-contents a:hover,
+.table-of-contents a:active {
+  text-decoration: underline;
+}
+
+h2:target {
+  animation: highlight 1s ease;
 }

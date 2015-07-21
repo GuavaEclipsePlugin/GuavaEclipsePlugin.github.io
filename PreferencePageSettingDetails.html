@@ -8,16 +8,20 @@
   <link rel="icon" type="image/png" sizes="16x16" href="https://GuavaEclipsePlugin.github.io/images/favicon-16x16.png">
   <link rel="stylesheet" type="text/css" href="https://GuavaEclipsePlugin.github.io/styles/GuavaEclipsePlugin.css">
   <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?autoload=true&amp;skin=sons-of-obsidian&amp;lang=java" defer="defer"></script>
+  <script src="js/jquery-2.1.4.min.js"></script>
+  <script src="js/toc.js"></script>
 </head>
-<body>
+<body onload="createToc();">
   <div id="container">
     <div id="header">
       <h1>Guava Eclipse Plugin</h1>
     </div>
-    <div id="content">
-      <h2>Use MoreObjects in toString Method (requires guava 18.0)</h2>
-      <h3>selected</h3>
-      <pre class="prettyprint lang-java">package net.sf.guavaeclipse.test;
+    <div class="content">
+      <div class="toc"></div>
+      <section>
+        <h2 id="one">Use MoreObjects in toString Method (requires guava 18.0)</h2>
+        <h3>selected</h3>
+        <pre class="prettyprint lang-java">package net.sf.guavaeclipse.test;
 
 import com.google.common.base.MoreObjects;
 
@@ -35,9 +39,10 @@ public class SampleSimple {
         .toString();
   }
 
-}</pre>
-      <h3>deselected</h3>
-      <pre class="prettyprint lang-java">package net.sf.guavaeclipse.test;
+}
+        </pre>
+        <h3>deselected</h3>
+        <pre class="prettyprint lang-java">package net.sf.guavaeclipse.test;
 
 import com.google.common.base.Objects;
 
@@ -55,10 +60,13 @@ public class SampleSimple {
         .toString();
   }
 
-}</pre>
-      <h2>super method behavior</h2>
-      <h3>Use super class Methods (toString(), equals() and hashCode())</h3>
-      <pre class="prettyprint lang-java">package net.sf.guavaeclipse.test;
+}
+        </pre>
+      </section>
+      <section>
+        <h2 id="two">super method behavior</h2>
+        <h3>Use super class Methods (toString(), equals() and hashCode())</h3>
+        <pre class="prettyprint lang-java">package net.sf.guavaeclipse.test;
 
 import com.google.common.base.Objects;
 import com.google.common.base.MoreObjects;
@@ -95,9 +103,10 @@ public class SampleSimple {
     return false;
   }
   
-}</pre>
-      <h3>Don't use super class Methods (toString(), equals() and hashCode())</h3>
-      <pre class="prettyprint lang-java">package net.sf.guavaeclipse.test;
+}
+        </pre>
+        <h3>Don't use super class Methods (toString(), equals() and hashCode())</h3>
+        <pre class="prettyprint lang-java">package net.sf.guavaeclipse.test;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
@@ -133,10 +142,11 @@ public class ClassExtendsSomeComparable extends ClassWithComparable {
     return false;
   }
 
-}</pre>
-      <h3>Use super class Methods (Only if superclass is not "java.lang.Object")</h3>
-      <h4>example one</h4>
-      <pre class="prettyprint lang-java">package net.sf.guavaeclipse.test;
+}
+        </pre>
+        <h3>Use super class Methods (Only if superclass is not "java.lang.Object")</h3>
+        <h4>example one</h4>
+        <pre class="prettyprint lang-java">package net.sf.guavaeclipse.test;
 
 import com.google.common.base.Objects;
 import com.google.common.base.MoreObjects;
@@ -168,9 +178,10 @@ public class SampleSimple {
     return false;
   }
   
-}</pre>
-      <h4>example two</h4>
-      <pre class="prettyprint lang-java">package net.sf.guavaeclipse.test;
+}
+        </pre>
+        <h4>example two</h4>
+        <pre class="prettyprint lang-java">package net.sf.guavaeclipse.test;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
@@ -209,7 +220,9 @@ public class ClassExtendsSomeComparable extends ClassWithComparable {
     return false;
   }
 
-}</pre>
+}
+        </pre>
+      </section>
     </div>
   </div>
 </body>
