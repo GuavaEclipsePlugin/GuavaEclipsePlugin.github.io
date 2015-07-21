@@ -15,6 +15,14 @@
   <script src="https://apis.google.com/js/platform.js" type="text/javascript" async="async" defer="defer"></script>
 </head>
 <body onload="createToc();">
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>  
   <div id="container">
     <div id="header">
       <h1>Guava Eclipse Plugin</h1>
@@ -98,6 +106,7 @@
         <p>Any contributions are welcome!</p>
         <p>You can find the sources here <a href="https://github.com/GuavaEclipsePlugin/GuavaEclipseHelper">https://github.com/GuavaEclipsePlugin/GuavaEclipseHelper</a></p>
         <div class="g-plusone" data-size="medium" data-href="https://GuavaEclipsePlugin.github.io" data-annotation="bubble" data-width="90"></g:plusone>
+        <div class="fb-like" data-href="https://guavaeclipseplugin.github.io/" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
       </section>
     </div>
   </div>
