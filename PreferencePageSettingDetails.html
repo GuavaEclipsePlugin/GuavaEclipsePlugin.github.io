@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="&#34;Guava Eclipse plugin&#34; is an eclipse plugin which will generate following methods: toString(), equals(...), hashCode, compareTo(...)">
+  <meta name="keywords" content="Guava Eclipse Plugin, GuavaEclipsePlugin, Guava Eclipse Helper, Eclipse Plugin, Java Code Generators, Eclipse Plugin Code Generators, Open Source Software, Source Code">
+  <title>Guava Eclipse Plugin - Preference Page Settings results explained</title>
+  <link rel="icon" type="image/png" sizes="16x16" href="https://GuavaEclipsePlugin.github.io/images/favicon-16x16.png">
+  <link rel="stylesheet" type="text/css" href="https://GuavaEclipsePlugin.github.io/styles/GuavaEclipsePlugin.css">
+  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?autoload=true&amp;skin=sons-of-obsidian&amp;lang=java" defer="defer"></script>
+</head>
+<body>
+  <div id="container">
+    <div id="header">
+      <h1>Guava Eclipse Plugin</h1>
+    </div>
+    <div id="content">
+      <h2>Use MoreObjects in toString Method (requires guava 18.0)</h2>
+      <h3>selected</h3>
+      <pre class="prettyprint lang-java">package net.sf.guavaeclipse.test;
+
+import com.google.common.base.MoreObjects;
+
+public class SampleSimple {
+
+  private int intValue;
+
+  private String strValue;
+
+  @Override
+  public String toString() {
+    return MoreObjects.toStringHelper(this)
+        .add("intValue", intValue)
+        .add("strValue", strValue)
+        .toString();
+  }
+
+}</pre>
+      <h3>deselected</h3>
+      <pre class="prettyprint lang-java">package net.sf.guavaeclipse.test;
+
+import com.google.common.base.Objects;
+
+public class SampleSimple {
+
+  private int intValue;
+
+  private String strValue;
+
+  @Override
+  public String toString() {
+    return Objects.toStringHelper(this)
+        .add("intValue", intValue)
+        .add("strValue", strValue)
+        .toString();
+  }
+
+}</pre>
+      <h2>super method behavior</h2>
+      <h3>Use super class Methods (toString(), equals() and hashCode())</h3>
+      <pre class="prettyprint lang-java">package net.sf.guavaeclipse.test;
+
+import com.google.common.base.Objects;
+import com.google.common.base.MoreObjects;
+
+public class SampleSimple {
+
+  private int intValue;
+
+  private String strValue;
+
+  @Override
+  public String toString() {
+    return MoreObjects.toStringHelper(this)
+        .add("super", super.toString())
+        .add("intValue", intValue)
+        .add("strValue", strValue)
+        .toString();
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(super.hashCode(), intValue, strValue);
+  }
+
+  @Override
+  public boolean equals(Object object) {
+    if (object instanceof SampleSimple) {
+      if (!super.equals(object))
+        return false;
+      SampleSimple that = (SampleSimple) object;
+      return Objects.equal(this.intValue, that.intValue)
+          &amps;&amps; Objects.equal(this.strValue, that.strValue);
+    }
+    return false;
+  }
+  
+}</pre>
+      <h3>Don't use super class Methods (toString(), equals() and hashCode())</h3>
+      <pre class="prettyprint lang-java">package net.sf.guavaeclipse.test;
+
+import com.google.common.base.MoreObjects;
+import com.google.common.base.Objects;
+
+public class ClassExtendsSomeComparable extends ClassWithComparable {
+
+  private int intValue2;
+
+  public int getIntValue2() {
+    return intValue2;
+  }
+
+  public void setIntValue2(int intValue2) {
+    this.intValue2 = intValue2;
+  }
+
+  @Override
+  public String toString() {
+    return MoreObjects.toStringHelper(this).add("intValue2", intValue2).toString();
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(intValue2);
+  }
+
+  @Override
+  public boolean equals(Object object) {
+    if (object instanceof ClassExtendsSomeComparable) {
+      ClassExtendsSomeComparable that = (ClassExtendsSomeComparable) object;
+      return Objects.equal(this.intValue2, that.intValue2);
+    }
+    return false;
+  }
+
+}</pre>
+      <h3>Use super class Methods (Only if superclass is not "java.lang.Object")</h3>
+      <h4>example one</h4>
+      <pre class="prettyprint lang-java">package net.sf.guavaeclipse.test;
+
+import com.google.common.base.Objects;
+import com.google.common.base.MoreObjects;
+
+public class SampleSimple {
+
+  private int intValue;
+
+  private String strValue;
+
+  @Override
+  public String toString() {
+    return MoreObjects.toStringHelper(this).add("intValue", intValue).add("strValue", strValue)
+        .toString();
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(intValue, strValue);
+  }
+
+  @Override
+  public boolean equals(Object object) {
+    if (object instanceof SampleSimple) {
+      SampleSimple that = (SampleSimple) object;
+      return Objects.equal(this.intValue, that.intValue)
+          &amps;&amps; Objects.equal(this.strValue, that.strValue);
+    }
+    return false;
+  }
+  
+}</pre>
+      <h4>example two</h4>
+      <pre class="prettyprint lang-java">package net.sf.guavaeclipse.test;
+
+import com.google.common.base.MoreObjects;
+import com.google.common.base.Objects;
+
+public class ClassExtendsSomeComparable extends ClassWithComparable {
+
+  private int intValue2;
+
+  public int getIntValue2() {
+    return intValue2;
+  }
+
+  public void setIntValue2(int intValue2) {
+    this.intValue2 = intValue2;
+  }
+
+  @Override
+  public String toString() {
+    return MoreObjects.toStringHelper(this).add("super", super.toString())
+        .add("intValue2", intValue2).toString();
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(super.hashCode(), intValue2);
+  }
+
+  @Override
+  public boolean equals(Object object) {
+    if (object instanceof ClassExtendsSomeComparable) {
+      if (!super.equals(object))
+        return false;
+      ClassExtendsSomeComparable that = (ClassExtendsSomeComparable) object;
+      return Objects.equal(this.intValue2, that.intValue2);
+    }
+    return false;
+  }
+
+}</pre>
+    </div>
+  </div>
+</body>
+</html>
