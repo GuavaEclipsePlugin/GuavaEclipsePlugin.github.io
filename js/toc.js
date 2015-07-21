@@ -6,21 +6,18 @@ var ToC =
 
 var newLine, el, title, link;
 
-$("section h2").each(function() {
-
-  el = $(this);
-  title = el.text();
-  link = "#" + el.attr("id");
-
-  newLine =
-    "<li>" +
-      "<a href='" + link + "'>" +
-        title +
-      "</a>" +
-    "</li>";
-
-  ToC += newLine;
-
+$("h3, h4, h5").each(function(i) {
+    var current = $(this);
+    current.attr("id", "title" + i);
+    newLine =
+        "<li title='" + current.prop('tagName') + "'>" +
+        "<a id='link" + i + "' href='#title" +
+        i + "' title='" + current.prop('tagName') + "'>" + 
+        current.html() + "</a>"
+        +"</li>";
+    ToC += newLine;
+    
+	
 });
 
 ToC +=

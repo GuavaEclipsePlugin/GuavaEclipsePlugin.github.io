@@ -8,8 +8,8 @@
   <link rel="icon" type="image/png" sizes="16x16" href="https://GuavaEclipsePlugin.github.io/images/favicon-16x16.png">
   <link rel="stylesheet" type="text/css" href="https://GuavaEclipsePlugin.github.io/styles/GuavaEclipsePlugin.css">
   <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?autoload=true&amp;skin=sons-of-obsidian&amp;lang=java" defer="defer"></script>
-  <script src="js/jquery-2.1.4.min.js"></script>
-  <script src="js/toc.js"></script>
+  <script src="https://GuavaEclipsePlugin.github.io/js/jquery-2.1.4.min.js"></script>
+  <script src="https://GuavaEclipsePlugin.github.io/js/toc.js"></script>
 </head>
 <body onload="createToc();">
   <div id="container">
@@ -19,8 +19,8 @@
     <div class="content">
       <div class="toc"></div>
       <section>
-        <h2 id="one">Use MoreObjects in toString Method (requires guava 18.0)</h2>
-        <h3>selected</h3>
+        <h3>Use MoreObjects in toString Method (requires guava 18.0)</h3>
+        <h4>selected</h4>
         <pre class="prettyprint lang-java">package net.sf.guavaeclipse.test;
 
 import com.google.common.base.MoreObjects;
@@ -41,7 +41,7 @@ public class SampleSimple {
 
 }
         </pre>
-        <h3>deselected</h3>
+        <h4>deselected</h4>
         <pre class="prettyprint lang-java">package net.sf.guavaeclipse.test;
 
 import com.google.common.base.Objects;
@@ -64,8 +64,8 @@ public class SampleSimple {
         </pre>
       </section>
       <section>
-        <h2 id="two">super method behavior</h2>
-        <h3>Use super class Methods (toString(), equals() and hashCode())</h3>
+        <h3>super method behavior</h3>
+        <h4>Use super class Methods (toString(), equals() and hashCode())</h4>
         <pre class="prettyprint lang-java">package net.sf.guavaeclipse.test;
 
 import com.google.common.base.Objects;
@@ -105,7 +105,7 @@ public class SampleSimple {
   
 }
         </pre>
-        <h3>Don't use super class Methods (toString(), equals() and hashCode())</h3>
+        <h4>Don't use super class Methods (toString(), equals() and hashCode())</h4>
         <pre class="prettyprint lang-java">package net.sf.guavaeclipse.test;
 
 import com.google.common.base.MoreObjects;
@@ -144,8 +144,8 @@ public class ClassExtendsSomeComparable extends ClassWithComparable {
 
 }
         </pre>
-        <h3>Use super class Methods (Only if superclass is not "java.lang.Object")</h3>
-        <h4>example one</h4>
+        <h4>Use super class Methods (Only if superclass is not "java.lang.Object")</h4>
+        <h5>example one</h5>
         <pre class="prettyprint lang-java">package net.sf.guavaeclipse.test;
 
 import com.google.common.base.Objects;
@@ -180,7 +180,7 @@ public class SampleSimple {
   
 }
         </pre>
-        <h4>example two</h4>
+        <h5>example two</h5>
         <pre class="prettyprint lang-java">package net.sf.guavaeclipse.test;
 
 import com.google.common.base.MoreObjects;

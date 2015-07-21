@@ -26,6 +26,7 @@ html, body {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   font-family: Helvetica, Arial, sans-serif;
+  font-size: 14px;
   float: left;
   background-color: #D8D8D8;
   color: #000000;
@@ -34,6 +35,18 @@ html, body {
   padding-right: 0px;
   padding-bottom: 60px;
   width: 100%;
+}
+
+.content h3 {
+  font-size: 20px;
+}
+
+.content h4 {
+  font-size: 17px;
+}
+
+.content h5 {
+  font-size: 14px;
 }
 
 #screenshots {
@@ -53,9 +66,8 @@ html, body {
 
 .table-of-contents {
   float: right;
-  width: 40%;
+  width: 30%;
   background: #eee;
-  font-size: 0.8em;
   padding: 1em 2em;
   margin: 0 0 0.5em 0.5em;
 }
@@ -65,9 +77,26 @@ html, body {
 .table-of-contents li {
   margin: 0 0 0.25em 0;
 }
+.table-of-contents li[title="H4"] {
+  margin: 0 0 0.25em 0.5em;
+}
+.table-of-contents li[title="H5"] {
+  margin: 0 0 0.25em 0.75em;
+}
 .table-of-contents a {
   text-decoration: none;
+  color: #000000;
 }
+.table-of-contents a[title="H3"] {
+  font-size: 16px;
+}
+.table-of-contents a[title="H4"] {
+  font-size: 14px;
+}
+.table-of-contents a[title="H5"] {
+  font-size: 12px;
+}
+
 .table-of-contents a:hover,
 .table-of-contents a:active {
   text-decoration: underline;
