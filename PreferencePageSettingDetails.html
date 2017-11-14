@@ -289,13 +289,113 @@ public class SampleSimple {
         <h4>selected</h4>
         <pre class="prettyprint lang-java">package net.sf.guavaeclipse.test;
 
-tbd
+import java.util.Objects;
+
+public class SampleSimple {
+
+	private int intValue;
+
+	private String stringValue;
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(intValue, stringValue);
+	}
+
+	@Override
+	public boolean equals(Object object) {
+		if (object instanceof SampleSimple) {
+			SampleSimple that = (SampleSimple) object;
+			return this.intValue == that.intValue && Objects.equals(this.stringValue, that.stringValue);
+		}
+		return false;
+	}
+
+}
         </pre>
         <h4>deselected</h4>
         <pre class="prettyprint lang-java">package net.sf.guavaeclipse.test;
 
-tdb
+import java.util.Objects;
 
+public class SampleSimple {
+
+	private int intValue;
+
+	private String stringValue;
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(intValue, stringValue);
+	}
+
+	@Override
+	public boolean equals(Object object) {
+		if (object instanceof SampleSimple) {
+			SampleSimple that = (SampleSimple) object;
+			return Objects.equals(this.intValue, that.intValue) && Objects.equals(this.stringValue, that.stringValue);
+		}
+		return false;
+	}
+
+}
+        </pre>
+      </section>
+      <section>
+        <h3>instanceOf or class equality check</h3>
+        <h4>use instanceOf in equals()</h4>
+        <pre class="prettyprint lang-java">package net.sf.guavaeclipse.test;
+
+import java.util.Objects;
+
+public class SampleSimple {
+
+	private int intValue;
+
+	private String strValue;
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(intValue, strValue);
+	}
+
+	@Override
+	public boolean equals(Object object) {
+		if (object instanceof SampleSimple) {
+			SampleSimple that = (SampleSimple) object;
+			return this.intValue == that.intValue && Objects.equals(this.strValue, that.strValue);
+		}
+		return false;
+	}
+
+}
+        </pre>
+        <h4>use class equality</h4>
+        <pre class="prettyprint lang-java">package net.sf.guavaeclipse.test;
+
+import java.util.Objects;
+
+public class SampleSimple {
+
+	private int intValue;
+
+	private String stringValue;
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(intValue, stringValue);
+	}
+
+	@Override
+	public boolean equals(Object object) {
+		if (object != null && getClass() == object.getClass()) {
+			SampleSimple that = (SampleSimple) object;
+			return this.intValue == that.intValue && Objects.equals(this.stringValue, that.stringValue);
+		}
+		return false;
+	}
+
+}
         </pre>
       </section>
       <section>
