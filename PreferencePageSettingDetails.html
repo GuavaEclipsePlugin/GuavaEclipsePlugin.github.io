@@ -19,6 +19,8 @@
     <div class="content">
       <div class="toc"></div>
       <section>
+        <h2>Guava Eclipse Plugin Preferences</h2>
+        <img alt="Guava Eclipse Plugin Preferences" src="https://GuavaEclipsePlugin.github.io/images/GuavaEclipsePlugin_Preferences.png"/>
         <h3>Use MoreObjects in toString Method (requires guava 18.0)</h3>
         <h4>selected</h4>
         <pre class="prettyprint lang-java">package net.sf.guavaeclipse.test;
@@ -219,6 +221,141 @@ public class ClassExtendsSomeComparable extends ClassWithComparable {
     }
     return false;
   }
+
+}
+        </pre>
+      </section>
+      <section>
+        <h2>Guava Eclipse Plugin Preferences</h2>
+        <img alt="Guava Eclipse Plugin Equals/HashCode Preferences" src="https://GuavaEclipsePlugin.github.io/images/GuavaEclipsePlugin_Preferences_EqualsHashCode.png"/>
+        <h3>Use java.util.Objects in equals/hashCode Methods (require JDK1.7 or higher)</h3>
+        <h4>selected</h4>
+        <pre class="prettyprint lang-java">package net.sf.guavaeclipse.test;
+
+import java.util.Objects;
+
+public class SampleSimple {
+
+	private int intValue;
+
+	private String strValue;
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(intValue, strValue);
+	}
+
+	@Override
+	public boolean equals(Object object) {
+		if (object instanceof SampleSimple) {
+			SampleSimple that = (SampleSimple) object;
+			return this.intValue == that.intValue && Objects.equals(this.strValue, that.strValue);
+		}
+		return false;
+	}
+
+}
+        </pre>
+        <h4>deselected</h4>
+        <pre class="prettyprint lang-java">package net.sf.guavaeclipse.test;
+
+import com.google.common.base.Objects;
+
+public class SampleSimple {
+
+	private int intValue;
+
+	private String strValue;
+
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(intValue, strValue);
+	}
+
+	@Override
+	public boolean equals(Object object) {
+		if (object instanceof SampleSimple) {
+			SampleSimple that = (SampleSimple) object;
+			return this.intValue == that.intValue && Objects.equal(this.strValue, that.strValue);
+		}
+		return false;
+	}
+
+}
+        </pre>
+      </section>
+      <section>
+        <h3>For primitives don't use Objects method in equals() to avoid casting</h3>
+        <h4>selected</h4>
+        <pre class="prettyprint lang-java">package net.sf.guavaeclipse.test;
+
+tbd
+        </pre>
+        <h4>deselected</h4>
+        <pre class="prettyprint lang-java">package net.sf.guavaeclipse.test;
+
+tdb
+
+        </pre>
+      </section>
+      <section>
+        <h3>use fields directly or use getter methods in equals and hashCode</h3>
+        <h4>use fields</h4>
+        <pre class="prettyprint lang-java">package net.sf.guavaeclipse.test;
+
+import java.util.Objects;
+
+public class SampleSimple {
+
+	private int intValue;
+
+	private String strValue;
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(intValue, strValue);
+	}
+
+	@Override
+	public boolean equals(Object object) {
+		if (object instanceof SampleSimple) {
+			SampleSimple that = (SampleSimple) object;
+			return this.intValue == that.intValue && Objects.equals(this.strValue, that.strValue);
+		}
+		return false;
+	}
+
+}
+        </pre>
+        <h4>use getter methods</h4>
+it uses only exisitng getter methods. if a field is selected but doesn't have a getter method if will use the field directly
+        <pre class="prettyprint lang-java">package net.sf.guavaeclipse.test;
+
+import java.util.Objects;
+
+public class SampleSimple {
+
+	private int intValue;
+
+	private String strValue;
+
+	public String getStrValue() {
+		return strValue;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(intValue, getStrValue());
+	}
+
+	@Override
+	public boolean equals(Object object) {
+		if (object instanceof SampleSimple) {
+			SampleSimple that = (SampleSimple) object;
+			return this.intValue == that.intValue && Objects.equals(this.getStrValue(), that.getStrValue());
+		}
+		return false;
+	}
 
 }
         </pre>
