@@ -6,7 +6,7 @@ var ToC =
 
 var newLine, el, title, link;
 
-$("h3, h4, h5").each(function(i) {
+$("h2, h3, h4, h5").each(function(i) {
     var current = $(this);
     current.attr("id", "title" + i);
     newLine =

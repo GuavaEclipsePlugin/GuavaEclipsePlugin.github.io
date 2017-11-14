@@ -37,6 +37,10 @@ html, body {
   width: 100%;
 }
 
+.content h2 {
+  font-size: 22px;
+}
+
 .content h3 {
   font-size: 20px;
 }
@@ -77,15 +81,21 @@ html, body {
 .table-of-contents li {
   margin: 0 0 0.25em 0;
 }
-.table-of-contents li[title="H4"] {
+.table-of-contents li[title="H3"] {
   margin: 0 0 0.25em 0.5em;
 }
-.table-of-contents li[title="H5"] {
+.table-of-contents li[title="H4"] {
   margin: 0 0 0.25em 0.75em;
+}
+.table-of-contents li[title="H5"] {
+  margin: 0 0 0.25em 1.0em;
 }
 .table-of-contents a {
   text-decoration: none;
   color: #000000;
+}
+.table-of-contents a[title="H2"] {
+  font-size: 18px;
 }
 .table-of-contents a[title="H3"] {
   font-size: 16px;
